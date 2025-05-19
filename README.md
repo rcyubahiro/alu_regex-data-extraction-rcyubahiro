@@ -1,81 +1,68 @@
-🧪 alu_regex-data-extraction-rcyubahiro
-🔍 Overview
-This project is a data extraction tool built using Python and Regular Expressions (regex). It scans through large text inputs and extracts specific types of data such as:
-
-Email addresses
-
-URLs
-
-Phone numbers
-
-Credit card numbers
-
-Time (12-hour and 24-hour formats)
-
-The goal is to simulate a real-world data parsing task as part of a Junior Full Stack Developer internship project.
-
-  Tech Stack
-Language: Python 3
-
-Libraries: Built-in re module (for regex)
-
-  File Structure
-bash
+README.md
+markdown
 Copy
 Edit
-alu regex-data-extraction-rcyubahiro/
-├── extractors.py          # Contains all regex functions
-├── test extractors.py     # Script to test and demonstrate the extractors
-├── README.md              # Project documentation (this file)
-  Features
-Data Type	Supported Examples
-Emails	user@example.com, firstname.lastname@company.co.uk
-URLs	https://www.example.com, https://sub.example.org
-Phone Numbers	(123) 456-7890, 123-456-7890, 123.456.7890
-Credit Cards	1234 5678 9012 3456, 1234-5678-9012-3456
-Time Formats	14:30, 2:30 PM
+# Regex Data Extraction
 
-   How to Run
-Make sure you have Python 3 installed.
+This project extracts specific patterns from text using **regular expressions (regex)** in Python. It handles email addresses, phone numbers, URLs, credit card numbers, and time formats.
 
-Clone the repository:
+## Project Structure
+
+├── extractors.py # Core regex extraction functions
+├── test extractors.py # Unit tests using unittest module
+├── README.md # This file
+└── pycache/ # Compiled Python cache
 
 bash
 Copy
 Edit
-git clone https://github.com/rcyubahiro/alu regex-data-extraction-rcyubahiro.git
-cd alu regex-data-extraction-rcyubahiro
-Run the test script:
+
+##  Supported Patterns
+
+| Pattern Type     | Description                                 |
+|------------------|---------------------------------------------|
+| Emails           | Extracts standard and some obfuscated emails |
+| Phone Numbers    | Local + international formats (e.g. +250...) |
+| URLs             | Extracts http/https and www links            |
+| Credit Cards     | Basic pattern for 16-digit credit card numbers |
+| Time Formats     | Recognizes HH:MM and HH:MM:SS formats        |
+
+##  How to Run
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/rcyubahiro/alu_regex-data-extraction-rcyubahiro.git
+   cd alu_regex-data-extraction-rcyubahiro
+Run the test cases
 
 bash
 Copy
 Edit
-python3 test extractors.py
-This will output the extracted data from a sample string.
-
-  Sample Output
-text
+python3 test_extractors.py
+  Sample Usage
+python
 Copy
 Edit
-Emails: ['user@example.com', 'firstname.lastname@company.co.uk']
-URLs: ['https://www.example.com', 'https://subdomain.example.org/page']
-Phone Numbers: ['(123) 456-7890', '123.456.7890']
-Credit Cards: ['1234-5678-9012-3456']
-Time Formats: ['14:30', '2:30 PM']
-   Edge Case Handling
-The script handles variations in format, such as:
+from extractors import extract_emails, extract_urls
 
-Email with dots and subdomains
+text = "Contact me at test.email+01@gmail.com or visit https://example.com"
+print(extract_emails(text))  # Output: ['test.email+01@gmail.com']
+print(extract_urls(text))    # Output: ['https://example.com']
+  Output Preview
+bash
+Copy
+Edit
+.
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
 
-Phone numbers with dashes, dots, or parentheses
+OK
+   Requirements
+Python 3.8+
 
-Mixed-format times (AM/PM and 24-hour)
+No external dependencies (uses only Python's built-in re and unittest)
 
-License
-This project is for educational use under the ALU regex extraction assignment. Feel free to reuse with attribution.
-
- Author
+Author
 Robert CYUBAHIRO
-GitHub Profile:rcyubahiro
-
-
+Mastercard Foundation Scholar at ALU
+Project for Regex Challenge at ALU
